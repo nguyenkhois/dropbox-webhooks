@@ -41,7 +41,7 @@ export const webhooks = functions.https.onRequest((request, response) => {
             firebaseAdmin.initializeApp(functions.config().firebase);
             const db = firebaseAdmin.firestore();
 
-            db.collection('dbxWebhooks').doc('receiveData').set({
+            db.collection('dbxwebhooks').doc('resdata').set({
                 data: request.body,
                 writeTime: Date.now()
             })
