@@ -1,0 +1,100 @@
+[debug] [2018-05-29T13:21:53.740Z] ----------------------------------------------------------------------
+[debug] [2018-05-29T13:21:53.743Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy --project angular-dropbox-webhooks
+[debug] [2018-05-29T13:21:53.743Z] CLI Version:   3.18.5
+[debug] [2018-05-29T13:21:53.743Z] Platform:      win32
+[debug] [2018-05-29T13:21:53.743Z] Node Version:  v10.2.1
+[debug] [2018-05-29T13:21:53.744Z] Time:          Tue May 29 2018 15:21:53 GMT+0200 (W. Europe Daylight Time)
+[debug] [2018-05-29T13:21:53.744Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-05-29T13:21:53.756Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-05-29T13:21:53.757Z] > authorizing via signed-in user
+[debug] [2018-05-29T13:21:53.759Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/angular-dropbox-webhooks  
+  
+ Tue May 29 2018 15:21:53 GMT+0200 (W. Europe Daylight Time)
+[debug] [2018-05-29T13:21:54.521Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-29T13:21:54.524Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/angular-dropbox-webhooks/tokens  
+  
+ Tue May 29 2018 15:21:54 GMT+0200 (W. Europe Daylight Time)
+[debug] [2018-05-29T13:21:55.249Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'angular-dropbox-webhooks'...
+[info] 
+[info] i  deploying functions
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] +  functions: Finished running predeploy script.
+[debug] [2018-05-29T13:22:02.205Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "~5.12.1",
+    "firebase-functions": "^1.0.3"
+  },
+  "devDependencies": {
+    "typescript": "^2.5.3"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-05-29T13:22:02.206Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/angular-dropbox-webhooks?view=CONSUMER_VIEW  
+  
+ Tue May 29 2018 15:22:02 GMT+0200 (W. Europe Daylight Time)
+[debug] [2018-05-29T13:22:02.207Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/angular-dropbox-webhooks?view=CONSUMER_VIEW  
+  
+ Tue May 29 2018 15:22:02 GMT+0200 (W. Europe Daylight Time)
+[debug] [2018-05-29T13:22:03.426Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-29T13:22:03.521Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-05-29T13:22:03.530Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/angular-dropbox-webhooks  
+  
+ Tue May 29 2018 15:22:03 GMT+0200 (W. Europe Daylight Time)
+[debug] [2018-05-29T13:22:04.450Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-29T13:22:04.451Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/425496205859:getServerAppConfig  
+  
+ Tue May 29 2018 15:22:04 GMT+0200 (W. Europe Daylight Time)
+[debug] [2018-05-29T13:22:05.060Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-05-29T13:22:05.069Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/angular-dropbox-webhooks/configs  
+  
+ Tue May 29 2018 15:22:05 GMT+0200 (W. Europe Daylight Time)
+[debug] [2018-05-29T13:22:06.254Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (39.65 KB) for uploading
+[debug] [2018-05-29T13:22:06.530Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/angular-dropbox-webhooks/locations/us-central1/functions:generateUploadUrl  
+  
+ Tue May 29 2018 15:22:06 GMT+0200 (W. Europe Daylight Time)
+[debug] [2018-05-29T13:22:36.792Z] <<< HTTP RESPONSE 503
+[debug] [2018-05-29T13:22:36.793Z] <<< HTTP RESPONSE BODY {
+  "error": {
+    "code": 503,
+    "message": "The service is currently unavailable.",
+    "status": "UNAVAILABLE"
+  }
+}
+
+[debug] [2018-05-29T13:22:36.798Z] TypeError: Cannot create property 'error' on string '{
+  "error": {
+    "code": 503,
+    "message": "The service is currently unavailable.",
+    "status": "UNAVAILABLE"
+  }
+}
+'
+    at module.exports (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:11:16)
+    at Request._callback (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:47:25)
+    at Request.self.callback (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (events.js:182:13)
+    at Request.EventEmitter.emit (domain.js:442:20)
+    at Request.<anonymous> (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1157:10)
+    at Request.emit (events.js:182:13)
+    at Request.EventEmitter.emit (domain.js:442:20)
+    at IncomingMessage.<anonymous> (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1079:12)
+    at Object.onceWrapper (events.js:273:13)
+[error] 
+[error] Error: An unexpected error has occurred.
