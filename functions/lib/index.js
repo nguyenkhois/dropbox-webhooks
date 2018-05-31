@@ -4,7 +4,9 @@ const functions = require("firebase-functions");
 const firebaseAdmin = require("firebase-admin");
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
-//
+// Initalizing Firebase and Firestore
+firebaseAdmin.initializeApp(functions.config().firebase);
+const db = firebaseAdmin.firestore();
 exports.defaultHeaders = {
     'Content-Type': 'text/html',
     'Access-Control-Allow-Origin': '*',
@@ -29,8 +31,6 @@ exports.webhooks = functions.https.onRequest((request, response) => {
                 .send(queryString);
             break;
         case 'POST':
-            firebaseAdmin.initializeApp(functions.config().firebase);
-            const db = firebaseAdmin.firestore();
             db.collection('dbxwebhooks').add({
                 data: request.body,
                 isnotified: false,
@@ -67,7 +67,6 @@ exports.webhooksfb = functions.https.onRequest((request, response) => {
                 .send(queryString);
             break;
         case 'POST':
-            firebaseAdmin.initializeApp(functions.config().firebase);
             const newKey = firebaseAdmin.database().ref('dbxwebhooks').push().key;
             firebaseAdmin.database().ref('dbxwebhooks/' + newKey).set({
                 data: request.body,

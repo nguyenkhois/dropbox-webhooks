@@ -3,7 +3,11 @@ import * as firebaseAdmin from 'firebase-admin';
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
-//
+
+// Initalizing Firebase and Firestore
+firebaseAdmin.initializeApp(functions.config().firebase);
+const db = firebaseAdmin.firestore();
+
 export const defaultHeaders = {
     'Content-Type': 'text/html',
     'Access-Control-Allow-Origin': '*',
@@ -31,9 +35,6 @@ export const webhooks = functions.https.onRequest((request, response) => {
                     .send(queryString);
             break;
         case 'POST':
-            firebaseAdmin.initializeApp(functions.config().firebase);
-            const db = firebaseAdmin.firestore();
-
             db.collection('dbxwebhooks').add({
                 data: request.body,
                 isnotified: false,
@@ -72,9 +73,7 @@ export const webhooksfb = functions.https.onRequest((request, response) => {
                     .send(queryString);
             break;
         case 'POST':
-            firebaseAdmin.initializeApp(functions.config().firebase);
             const newKey = firebaseAdmin.database().ref('dbxwebhooks').push().key;
-
             firebaseAdmin.database().ref('dbxwebhooks/' + newKey).set({
                     data: request.body,
                     isnotified: false,
