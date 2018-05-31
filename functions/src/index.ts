@@ -34,8 +34,9 @@ export const webhooks = functions.https.onRequest((request, response) => {
             firebaseAdmin.initializeApp(functions.config().firebase);
             const db = firebaseAdmin.firestore();
 
-            db.collection('dbxwebhooks').doc('resdata').set({
+            db.collection('dbxwebhooks').add({
                 data: request.body,
+                isnotified: false,
                 timestamp: Date.now()
             })
             .then(() => {
@@ -72,8 +73,11 @@ export const webhooksfb = functions.https.onRequest((request, response) => {
             break;
         case 'POST':
             firebaseAdmin.initializeApp(functions.config().firebase);
-            firebaseAdmin.database().ref('dbxwebhooks/').set({
+            const newKey = firebaseAdmin.database().ref('dbxwebhooks').push().key;
+
+            firebaseAdmin.database().ref('dbxwebhooks/' + newKey).set({
                     data: request.body,
+                    isnotified: false,
                     timestamp: Date.now()
                 },
                 (error) => {
